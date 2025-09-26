@@ -27,6 +27,6 @@ spec:
             - name: AWS_SECRET_ACCESS_KEY
               value: "{{ .Values.AWS_SECRET_ACCESS_KEY }}"
             - name: APP_S3_FILE_TO_UPLOAD
-              value: "pom.xml"
+              value: "{{ .Values.FILE_TO_UPLOAD }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

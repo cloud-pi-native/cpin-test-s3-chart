@@ -19,3 +19,4 @@ resources:
 
 AWS_ACCESS_KEY_ID: "test"
 AWS_SECRET_ACCESS_KEY: "test"
+FILE_TO_UPLOAD: "test.txt"
