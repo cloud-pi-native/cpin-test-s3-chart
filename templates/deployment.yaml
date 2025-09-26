@@ -1,44 +1,32 @@
-{{- if .Values.storage.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "socle-ovh-statistics.fullname" . }}
+  name: tests3
   labels:
-    {{- include "socle-ovh-statistics.labels" . | nindent 4 }}
-    app: socle-ovh-statistics
+    app: tests3
 spec:
-  replicas: {{ .Values.storage.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      {{- include "socle-ovh-statistics.selectorLabels" . | nindent 6 }}
-      app: socle-ovh-statistics
+      app: tests3
   template:
     metadata:
       labels:
-        {{- include "socle-ovh-statistics.selectorLabels" . | nindent 8 }}
-        app: socle-ovh-statistics
+        app: tests3
     spec:
       imagePullSecrets:
-        - name: {{ .Values.storage.imagePullSecret }}
+        - name: {{ .Values.imagePullSecret }}
 
       containers:
-        - name: {{ .Chart.Name }}-storage
-          image: "{{ .Values.storage.image.repository }}:{{ .Values.storage.image.tag }}"
-          imagePullPolicy: {{ .Values.storage.image.pullPolicy }}
+        - name: tests3
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: Always
           env:
-            - name: PORT
-              value: "{{ .Values.storage.conf.port }}"
-            - name: NODE_TLS_REJECT_UNAUTHORIZED
-              value: "0"
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: sercret-storage
-                  key: DATABASE_URL
-          ports:
-            - name: http
-              containerPort: {{ .Values.storage.conf.port }}
-              protocol: TCP
+            - name: AWS_ACCESS_KEY_ID
+              value: "test"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "testsecret"
+            - name: APP_S3_FILE_TO_UPLOAD
+              value: "pom.xml"
           resources:
             {{- toYaml .Values.storage.resources | nindent 12 }}
-{{- end }}
