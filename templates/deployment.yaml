@@ -28,5 +28,7 @@ spec:
               value: "{{ .Values.AWS_SECRET_ACCESS_KEY }}"
             - name: APP_S3_FILE_TO_UPLOAD
               value: "{{ .Values.FILE_TO_UPLOAD }}"
+            - name: DISABLE_CERT_CHECKING_SYSTEM_PROPERTY
+              value: "{{ .Values.DISABLE_CERT_CHECKING_SYSTEM_PROPERTY }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
