@@ -29,4 +29,4 @@ spec:
             - name: APP_S3_FILE_TO_UPLOAD
               value: "pom.xml"
           resources:
-            {{- toYaml .Values.storage.resources | nindent 12 }}
+            {{- toYaml .Values.resources | nindent 12 }}
