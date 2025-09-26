@@ -7,7 +7,7 @@ image:
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "main"
-imagePullSecret: image-pull-secret
+imagePullSecret: registry-pull-secret
 
 resources: 
   limits:
@@ -17,3 +17,5 @@ resources:
     memory: "512Mi"
     cpu: "100m"  
 
+AWS_ACCESS_KEY_ID: "test"
+AWS_SECRET_ACCESS_KEY: "test"

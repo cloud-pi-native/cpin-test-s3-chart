@@ -23,9 +23,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: AWS_ACCESS_KEY_ID
-              value: "test"
+              value: "{{ .Values.AWS_ACCESS_KEY_ID }}"
             - name: AWS_SECRET_ACCESS_KEY
-              value: "testsecret"
+              value: "{{ .Values.AWS_SECRET_ACCESS_KEY }}"
             - name: APP_S3_FILE_TO_UPLOAD
               value: "pom.xml"
           resources:
